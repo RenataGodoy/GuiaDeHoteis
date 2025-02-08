@@ -13,6 +13,8 @@ namespace GuiaDeMoteisAPI.Data
         public DbSet<Suite> Suites { get; set; }
         public DbSet<Motel> Motels { get; set; }
         public DbSet<Reservation> Reservations { get; set; }
+        public DbSet<User> Users { get; set; } 
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

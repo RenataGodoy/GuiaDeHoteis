@@ -1,3 +1,11 @@
+C:\Users\renat\GuiaDeMoteisAPI\obj\Debug\net9.0\GuiaDeMoteisAPI.csproj.AssemblyReference.cache
+C:\Users\renat\GuiaDeMoteisAPI\obj\Debug\net9.0\GuiaDeMoteisAPI.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\renat\GuiaDeMoteisAPI\obj\Debug\net9.0\GuiaDeMoteisAPI.AssemblyInfoInputs.cache
+C:\Users\renat\GuiaDeMoteisAPI\obj\Debug\net9.0\GuiaDeMoteisAPI.AssemblyInfo.cs
+C:\Users\renat\GuiaDeMoteisAPI\obj\Debug\net9.0\GuiaDeMoteisAPI.csproj.CoreCompileInputs.cache
+C:\Users\renat\GuiaDeMoteisAPI\obj\Debug\net9.0\GuiaDeMoteisAPI.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\renat\GuiaDeMoteisAPI\obj\Debug\net9.0\GuiaDeMoteisAPI.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\renat\GuiaDeMoteisAPI\obj\Debug\net9.0\GuiaDeMoteisAPI.sourcelink.json
 C:\Users\renat\GuiaDeMoteisAPI\bin\Debug\net9.0\appsettings.Development.json
 C:\Users\renat\GuiaDeMoteisAPI\bin\Debug\net9.0\appsettings.json
 C:\Users\renat\GuiaDeMoteisAPI\bin\Debug\net9.0\GuiaDeMoteisAPI.staticwebassets.endpoints.json
@@ -106,13 +114,6 @@ C:\Users\renat\GuiaDeMoteisAPI\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.Worksp
 C:\Users\renat\GuiaDeMoteisAPI\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
 C:\Users\renat\GuiaDeMoteisAPI\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
 C:\Users\renat\GuiaDeMoteisAPI\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
-C:\Users\renat\GuiaDeMoteisAPI\obj\Debug\net9.0\GuiaDeMoteisAPI.csproj.AssemblyReference.cache
-C:\Users\renat\GuiaDeMoteisAPI\obj\Debug\net9.0\GuiaDeMoteisAPI.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\renat\GuiaDeMoteisAPI\obj\Debug\net9.0\GuiaDeMoteisAPI.AssemblyInfoInputs.cache
-C:\Users\renat\GuiaDeMoteisAPI\obj\Debug\net9.0\GuiaDeMoteisAPI.AssemblyInfo.cs
-C:\Users\renat\GuiaDeMoteisAPI\obj\Debug\net9.0\GuiaDeMoteisAPI.csproj.CoreCompileInputs.cache
-C:\Users\renat\GuiaDeMoteisAPI\obj\Debug\net9.0\GuiaDeMoteisAPI.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\renat\GuiaDeMoteisAPI\obj\Debug\net9.0\GuiaDeMoteisAPI.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\renat\GuiaDeMoteisAPI\obj\Debug\net9.0\scopedcss\bundle\GuiaDeMoteisAPI.styles.css
 C:\Users\renat\GuiaDeMoteisAPI\obj\Debug\net9.0\staticwebassets.build.json
 C:\Users\renat\GuiaDeMoteisAPI\obj\Debug\net9.0\staticwebassets.development.json
@@ -129,3 +130,6 @@ C:\Users\renat\GuiaDeMoteisAPI\obj\Debug\net9.0\refint\GuiaDeMoteisAPI.dll
 C:\Users\renat\GuiaDeMoteisAPI\obj\Debug\net9.0\GuiaDeMoteisAPI.pdb
 C:\Users\renat\GuiaDeMoteisAPI\obj\Debug\net9.0\GuiaDeMoteisAPI.genruntimeconfig.cache
 C:\Users\renat\GuiaDeMoteisAPI\obj\Debug\net9.0\ref\GuiaDeMoteisAPI.dll
+C:\Users\renat\GuiaDeMoteisAPI\bin\Debug\net9.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\renat\GuiaDeMoteisAPI\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\renat\GuiaDeMoteisAPI\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll
