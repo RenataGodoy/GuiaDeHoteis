@@ -1,58 +1,72 @@
-namespace GuiaDeMoteisAPI.Services;
-
-using Microsoft.Extensions.Configuration;
+using GuiaDeMoteisAPI.Models;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using Microsoft.IdentityModel.Tokens;
-using GuiaDeMoteisAPI.Services;
-using GuiaDeMoteisAPI.Models;
 
-
-public interface IJwtService
+namespace GuiaDeMoteisAPI.Services
 {
-    string GenerateToken(User user);
-    Task<User> Authenticate(string username, string password);
-}
-
-public class JwtService : IJwtService
-{
-    private readonly IConfiguration _configuration;
-
-    public JwtService(IConfiguration configuration)
+    public interface IJwtService
     {
-        _configuration = configuration;
+        string GenerateToken(User user);
+        Task<User> Authenticate(string username, string password);
+        string HashPassword(string password);
     }
 
-    public string GenerateToken(User user)
+    public class JwtService : IJwtService
     {
-        var claims = new[]
+        private readonly string _secretKey;
+        private readonly string _issuer;
+        private readonly string _audience;
+
+        public JwtService(IConfiguration configuration)
         {
-            new Claim(ClaimTypes.Name, user.Username),
-            new Claim(ClaimTypes.NameIdentifier, user.Id.ToString())
-        };
+            _secretKey = configuration["Jwt:Secret"];
+            _issuer = configuration["Jwt:Issuer"];
+            _audience = configuration["Jwt:Audience"];
+        }
 
-        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Secret"]));
-        var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+        public string GenerateToken(User user)
+        {
+            var claims = new[]
+            {
+                new Claim(ClaimTypes.Name, user.Username),
+                new Claim(ClaimTypes.Role, user.Role)
+            };
 
-        var token = new JwtSecurityToken(
-            issuer: _configuration["Jwt:Issuer"],
-            audience: _configuration["Jwt:Audience"],
-            claims: claims,
-            expires: DateTime.Now.AddDays(1),
-            signingCredentials: creds
-        );
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_secretKey));
+            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
-        return new JwtSecurityTokenHandler().WriteToken(token);
-    }
+            var token = new JwtSecurityToken(
+                issuer: _issuer,
+                audience: _audience,
+                claims: claims,
+                expires: DateTime.Now.AddHours(1),
+                signingCredentials: creds
+            );
 
-    public async Task<User> Authenticate(string username, string password)
-    {
-        // Aqui você pode consultar seu banco de dados e verificar se o usuário existe
-        // e se a senha está correta.
-        // Se o usuário for válido, retorne o objeto User.
+            return new JwtSecurityTokenHandler().WriteToken(token);
+        }
 
-        return new User { Id = 1, Username = "TestUser" }; // Exemplo fictício
+        public async Task<User> Authenticate(string username, string password)
+        {
+            // Simulação de autenticação simples, em um caso real, você deve verificar o usuário no banco de dados
+            // Aqui está um exemplo básico de correspondência de senha
+            var user = new User { Username = username, PasswordHash = "hashed_password" }; // Exemplo
+
+            if (user != null && password == "senha123") // Simulação de senha simples
+            {
+                return user; // Se a senha corresponder, retorna o usuário
+            }
+
+            return null; // Se não encontrar, retorna null
+        }
+
+        public string HashPassword(string password)
+        {
+            // Aqui você pode adicionar sua lógica para gerar o hash da senha
+            return password; // Simples por enquanto, use algo como bcrypt ou SHA256 no seu caso real
+        }
     }
 }

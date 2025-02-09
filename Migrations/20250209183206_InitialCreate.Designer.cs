@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace GuiaDeMoteisAPI.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250208183616_AddRoleToUser")]
-    partial class AddRoleToUser
+    [Migration("20250209183206_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

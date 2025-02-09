@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GuiaDeMoteisAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c87de7349adde2251927c77d18b788735bf2970b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+72ecb7e7771fa642aad2a34f61dd081bcdd70301")]
 [assembly: System.Reflection.AssemblyProductAttribute("GuiaDeMoteisAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GuiaDeMoteisAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

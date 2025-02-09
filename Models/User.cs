@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Identity;
+
 namespace GuiaDeMoteisAPI.Models
 {
     public class User

@@ -133,3 +133,4 @@ C:\Users\renat\GuiaDeMoteisAPI\obj\Debug\net9.0\ref\GuiaDeMoteisAPI.dll
 C:\Users\renat\GuiaDeMoteisAPI\bin\Debug\net9.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\renat\GuiaDeMoteisAPI\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\renat\GuiaDeMoteisAPI\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\renat\GuiaDeMoteisAPI\bin\Debug\net9.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
