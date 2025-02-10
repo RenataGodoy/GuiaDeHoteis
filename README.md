@@ -1,6 +1,7 @@
-# Guia de Hotéis - Documentação e Setup
+# Guia de Hotéis - Guia do projeto
 
 ## Sobre o Projeto
+
 O **Guia de Hotéis** é uma API desenvolvida para facilitar a consulta de hotéis, reservas e faturamento mensal. A aplicação possui um **backend em .NET**, um **frontend em React com Vite** e um **banco de dados PostgreSQL**. Para testar os endpoints, utilizamos o **Swagger**, e toda a infraestrutura roda dentro de containers Docker.
 
 O frontend está funcional, mas com um design básico, pois o foco inicial foi a implementação da API.
@@ -8,6 +9,7 @@ O frontend está funcional, mas com um design básico, pois o foco inicial foi a
 ---
 
 ## Tecnologias Utilizadas
+
 - **Backend:** .NET 9
 - **Frontend:** React + Vite
 - **Banco de Dados:** PostgreSQL 17
@@ -18,6 +20,7 @@ O frontend está funcional, mas com um design básico, pois o foco inicial foi a
 ---
 
 ## 💪 Pré-requisitos
+
 Certifique-se de ter o **Docker** e o **Docker Compose** instalados. Caso não tenha, siga os passos abaixo:
 
 ```sh
@@ -54,17 +57,20 @@ docker compose version
 ## 🚀 Como Rodar o Projeto
 
 1️⃣ Clone este repositório:
+
 ```sh
-git clone https://github.com/seu-usuario/GuiaDeHoteis.git
+git clone https://github.com/RenataGodoy/GuiaDeHoteis.git
 cd GuiaDeHoteis
 ```
 
 2️⃣ Construa e suba os containers:
+
 ```sh
 docker compose up --build -d
 ```
 
 3️⃣ Acesse a aplicação no navegador:
+
 ```
 Frontend: http://localhost:5173
 Backend: http://localhost:8000
@@ -72,6 +78,7 @@ Swagger: http://localhost:8000/swagger
 ```
 
 Para parar os containers:
+
 ```sh
 docker compose down
 ```
@@ -81,16 +88,19 @@ docker compose down
 ## 🔍 Endpoints Disponíveis
 
 ### 🌐 Rotas Públicas:
+
 - **`GET /`** → Página inicial do frontend
 - **`POST /api/auth/login`** → Realiza login e retorna um token JWT
-- **`POST /api/auth/register`** → Registra user e retorna um token JWT
+- **`POST /api/auth/register`** → Registra usuario e retorna um token JWT
 
 ### 🔒 Rotas Protegidas (Usuário autenticado):
-- **`GET /user-dashboard`** → Página do usuário (usa o endpoint `/reservas`)
-- **`GET /api/reservas`** → Retorna todas as reservas
+
+- **`GET /user-dashboard`** → Página do usuário 
+- **`GET /api/reservations`** → Retorna todas as reservas
 
 ### 🚫 Rota Oculta (Admin):
-- **`GET /api/admin/faturamento`** → Retorna o faturamento mensal (apenas admin)
+
+- **`GET /api/admin-dashboard`** → Retorna o faturamento mensal (apenas admin)
   - **Requer token JWT de admin**
 
 ---
@@ -98,25 +108,26 @@ docker compose down
 ## 💪 Comandos úteis do Docker
 
 🔹 **Ver logs do container:**
+
 ```sh
 docker compose logs -f
 ```
 
 🔹 **Reiniciar um serviço específico:**
+
 ```sh
 docker compose restart nome-do-servico
 ```
 
 🔹 **Remover containers, volumes e imagens sem uso:**
+
 ```sh
 docker system prune -a
 ```
 
 Agora é só rodar e testar! 🚀
 
-
 ## Considerações Finais
-O projeto ainda precisa de melhorias no frontend, pois não houve tempo suficiente para refinar a interface, devido a problemas pessoais. No entanto, a API está totalmente funcional e pode ser testada via Swagger.
+O projeto ainda precisa de melhorias no frontend, pois não houve tempo suficiente para refinar a interface. No entanto, a API está totalmente funcional e pode ser testada via Swagger.
 
 Qualquer sugestão ou contribuição é bem-vinda! 🚀
-
