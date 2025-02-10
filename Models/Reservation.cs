@@ -9,8 +9,8 @@ namespace GuiaDeMoteisAPI.Models
         public int ClientId { get; set; }
         public Client Client { get; set; } // N:1 relationship with Client
 
-        public DateTime StartDate { get; set; }
-        public DateTime EndDate { get; set; }
+        public DateOnly StartDate { get; set; }
+        public DateOnly EndDate { get; set; }
         public decimal TotalAmount { get; set; }
     }
 }

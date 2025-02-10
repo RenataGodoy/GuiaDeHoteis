@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import "./home.css"; // Importação correta
+import "../Pages/Home"; 
 
 export default function Home() {
   const [moteis, setMoteis] = useState([]);
@@ -8,7 +8,7 @@ export default function Home() {
   useEffect(() => {
     async function fetchMoteis() {
       try {
-        const response = await fetch("http://localhost:5214/api/moteis");
+        const response = await fetch("http://localhost:5214/api/Reservations");
         if (!response.ok) throw new Error("Erro ao buscar motéis");
         const data = await response.json();
         setMoteis(data);
@@ -43,8 +43,8 @@ export default function Home() {
       <div className="motel-list">
         {moteis.map((motel, index) => (
           <div key={index} className="motel-card">
-            <h3>{motel.nome}</h3>
-            <p>{motel.endereco}</p>
+            {/* <h3>{motel.nome}</h3>
+            <p>{motel.endereco}</p> */}
           </div>
         ))}
       </div>

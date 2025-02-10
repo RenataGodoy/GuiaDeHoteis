@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Card, CardContent } from "@/components/ui/card";
+import "../index.css"; 
 
 export default function AdminDashboard() {
   const [faturamento, setFaturamento] = useState<number | null>(null);
@@ -49,8 +49,6 @@ export default function AdminDashboard() {
 
   return (
     <div className="flex justify-center items-center min-h-screen">
-      <Card className="w-96 shadow-xl">
-        <CardContent className="p-6">
           <h2 className="text-2xl font-bold text-center mb-4">Dashboard do Admin</h2>
 
           <label htmlFor="mes">Mês:</label>
@@ -73,8 +71,6 @@ export default function AdminDashboard() {
           <p className="text-center text-lg">
             <strong>Faturamento mensal:</strong> R$ {faturamento !== null ? faturamento.toLocaleString("pt-BR", { minimumFractionDigits: 2 }) : "Carregando..."}
           </p>
-        </CardContent>
-      </Card>
     </div>
   );
 }

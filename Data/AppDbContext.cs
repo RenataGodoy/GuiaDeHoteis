@@ -18,6 +18,7 @@ namespace GuiaDeMoteisAPI.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
             modelBuilder.Entity<Reservation>()
                 .HasOne(r => r.Client)
                 .WithMany(c => c.Reservations)
@@ -32,7 +33,7 @@ namespace GuiaDeMoteisAPI.Data
                 .HasOne(s => s.Motel)
                 .WithMany(m => m.Suites)
                 .HasForeignKey(s => s.MotelId);
-
+         
             base.OnModelCreating(modelBuilder);
         }
     }

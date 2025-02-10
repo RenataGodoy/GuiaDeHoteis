@@ -25,9 +25,9 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         {
             ValidateIssuer = true,
             ValidateAudience = true,
-            ValidIssuer = builder.Configuration["Jwt:Issuer"],
-            ValidAudience = builder.Configuration["Jwt:Audience"],
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Secret"]))
+            ValidIssuer = builder.Configuration["Jwt:Issuer"],  // Certifique-se de que o valor está correto
+            ValidAudience = builder.Configuration["Jwt:Audience"], // Certifique-se de que o valor está correto
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Secret"])) // Certifique-se de que a chave secreta está correta
         };
     });
 
@@ -80,7 +80,14 @@ using (var scope = app.Services.CreateScope())
     DbInitializer.Initialize(context); // Certifique-se de que DbInitializer está implementado corretamente
 }
 
-// Configuração do Swagger
+// Usar o CORS antes da autenticação
+app.UseCors("AllowAll");
+
+// Usar autenticação e autorização
+app.UseAuthentication();
+app.UseAuthorization();
+
+// Configuração do Swagger (após a autenticação)
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -91,20 +98,72 @@ if (app.Environment.IsDevelopment())
     });
 }
 
-// Usar autenticação e autorização
-app.UseAuthentication();
-app.UseAuthorization();
-
-// Definir o middleware do CORS, caso necessário
-app.UseCors("AllowAll");
-
-app.UseCors(builder =>
-{
-    builder.AllowAnyOrigin()
-           .AllowAnyMethod()
-           .AllowAnyHeader();
-});
-
 app.MapControllers();
-
 app.Run();
+
+
+// using Microsoft.EntityFrameworkCore;
+// using Microsoft.IdentityModel.Tokens;
+// using GuiaDeMoteisAPI.Data;
+// using GuiaDeMoteisAPI.Services;
+// using System.Text;
+
+// var builder = WebApplication.CreateBuilder(args);
+
+// // Configuração do DbContext
+// builder.Services.AddDbContext<AppDbContext>(options =>
+//     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+// // Configuração do JWT
+// builder.Services.AddScoped<IJwtService, JwtService>();
+
+// var jwtKey = builder.Configuration["Jwt:Secret"];
+// if (string.IsNullOrEmpty(jwtKey))
+// {
+//     throw new Exception("A chave JWT não está configurada corretamente.");
+// }
+
+// builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+//     .AddJwtBearer(options =>
+//     {
+//         options.RequireHttpsMetadata = false;
+//         options.SaveToken = true;
+//         options.TokenValidationParameters = new TokenValidationParameters
+//         {
+//             ValidateIssuer = true,
+//             ValidateAudience = true,
+//             ValidateLifetime = true,
+//             ValidateIssuerSigningKey = true,
+//             ValidIssuer = builder.Configuration["Jwt:Issuer"],
+//             ValidAudience = builder.Configuration["Jwt:Audience"],
+//             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey))
+//         };
+//     });
+
+// builder.Services.AddControllers();
+// builder.Services.AddEndpointsApiExplorer();
+// builder.Services.AddSwaggerGen();
+
+// builder.Services.AddCors(options =>
+// {
+//     options.AddPolicy("AllowAll", policy =>
+//     {
+//         policy.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+//     });
+// });
+
+// var app = builder.Build();
+
+// app.UseCors("AllowAll");
+// app.UseAuthentication();
+// app.UseAuthorization();
+
+// if (app.Environment.IsDevelopment())
+// {
+//     app.UseSwagger();
+//     app.UseSwaggerUI();
+// }
+
+// app.MapControllers();
+// app.Run();
+

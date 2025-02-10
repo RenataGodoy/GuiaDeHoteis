@@ -134,3 +134,11 @@ C:\Users\renat\GuiaDeMoteisAPI\bin\Debug\net9.0\Swashbuckle.AspNetCore.Swagger.d
 C:\Users\renat\GuiaDeMoteisAPI\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\renat\GuiaDeMoteisAPI\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 C:\Users\renat\GuiaDeMoteisAPI\bin\Debug\net9.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\renat\GuiaDeMoteisAPI\bin\Debug\net9.0\frontend\package-lock.json
+C:\Users\renat\GuiaDeMoteisAPI\bin\Debug\net9.0\frontend\package.json
+C:\Users\renat\GuiaDeMoteisAPI\bin\Debug\net9.0\frontend\tsconfig.app.json
+C:\Users\renat\GuiaDeMoteisAPI\bin\Debug\net9.0\frontend\tsconfig.json
+C:\Users\renat\GuiaDeMoteisAPI\bin\Debug\net9.0\frontend\tsconfig.node.json
+C:\Users\renat\GuiaDeMoteisAPI\bin\Debug\net9.0\BCrypt.Net-Next.dll
+C:\Users\renat\GuiaDeMoteisAPI\bin\Debug\net9.0\package-lock.json
+C:\Users\renat\GuiaDeMoteisAPI\bin\Debug\net9.0\package.json

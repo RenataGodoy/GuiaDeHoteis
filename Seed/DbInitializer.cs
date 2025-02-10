@@ -54,26 +54,24 @@ namespace GuiaDeMoteisAPI.Seed
             // Adiciona reservas de exemplo
             var reservations = new List<Reservation>
             {
-                // Corrigir as datas para UTC
-            new Reservation
-            {
-                ClientId = clients[0].Id,
-                SuiteId = suites[0].Id,
-                StartDate = DateTime.SpecifyKind(new DateTime(2025, 07, 04), DateTimeKind.Utc), // Define como UTC
-                EndDate = DateTime.SpecifyKind(new DateTime(2025, 07, 04), DateTimeKind.Utc),   // Define como UTC
-                TotalAmount = 100
-            },
-
-            new Reservation
-            {
-                ClientId = clients[1].Id,
-                SuiteId = suites[1].Id,
-                StartDate = DateTime.SpecifyKind(new DateTime(2026, 10, 04), DateTimeKind.Utc), // Define como UTC
-                EndDate = DateTime.SpecifyKind(DateTime.Now.AddDays(1), DateTimeKind.Utc),      // Define como UTC
-                TotalAmount = 150
-            }
-
+                new Reservation
+                {
+                    ClientId = clients[0].Id,
+                    SuiteId = suites[0].Id,
+                    StartDate = new DateOnly(2025, 07, 01), 
+                    EndDate = new DateOnly(2025, 07, 30),
+                    TotalAmount = 100
+                },
+                new Reservation
+                {
+                    ClientId = clients[1].Id,
+                    SuiteId = suites[1].Id,
+                    StartDate = new DateOnly(2026, 10, 04), // Apenas a data
+                    EndDate = new DateOnly(2026, 10, 24),
+                    TotalAmount = 150
+                }
             };
+
             context.Reservations.AddRange(reservations);
             context.SaveChanges(); // Salvar as reservas
         }

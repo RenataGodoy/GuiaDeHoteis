@@ -1,11 +1,11 @@
-import { Link } from "react-router-dom";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../index.css"; // Importando os estilos
 
 export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [role, setRole] = useState("");
   const navigate = useNavigate();
 
   const handleLogin = async (e: React.FormEvent) => {
@@ -17,14 +17,15 @@ export default function Login() {
       body: JSON.stringify({
         username,
         passwordHash: password,
-        role: "User",
+        role,
       }),
     });
 
     if (response.ok) {
       const data = await response.json();
       localStorage.setItem("token", data.token);
-      navigate("/dashboard");
+      localStorage.setItem("userRole", role); // Armazenando o role no localStorage
+      navigate(`/dashboard/${role}`); // Redireciona para o painel do usuário com base no role
     } else {
       alert("Login falhou! Verifique suas credenciais.");
     }
@@ -49,6 +50,12 @@ export default function Login() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
+
+        <label>Escolha o Tipo de Login:</label>
+        <select value={role} onChange={(e) => setRole(e.target.value)}>
+          <option value="User">Usuário</option>
+          <option value="Admin">Administrador</option>
+        </select>
 
         <button type="submit">Entrar</button>
       </form>

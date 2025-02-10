@@ -1,46 +1,89 @@
-import { useEffect, useState } from "react";
-import { Card, CardContent } from "@/components/ui/card";
+import { useState } from "react";
+import "../index.css";
 
 export default function UserDashboard() {
   const [reservas, setReservas] = useState([]);
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  const formatDate = (date: string | Date): string => {
+    if (!date) return "";
+    return new Date(date).toISOString().split("T")[0];
+  };
 
   const fetchReservations = () => {
+    if (!startDate || !endDate) {
+      setError("Selecione ambas as datas antes de buscar reservas.");
+      return;
+    }
+
+    setLoading(true);
+    setError("");
     const token = localStorage.getItem("token");
 
-    fetch(`http://localhost:5214/api/reservations?startDate=${startDate}&endDate=${endDate}`, {
-      headers: { Authorization: `Bearer ${token}` },
+    if (!token) {
+      setError("Token de autenticação não encontrado.");
+      setLoading(false);
+      return;
+    }
+
+    const formattedStartDate = formatDate(startDate);
+    const formattedEndDate = formatDate(endDate);
+
+    fetch(`http://localhost:5214/api/Reservation/reservations?startDate=${formattedStartDate}&endDate=${formattedEndDate}`, {
+        headers: { Authorization: `Bearer ${token}` },
     })
-      .then((res) => res.json())
-      .then((data) => setReservas(data))
-      .catch(() => alert("Erro ao buscar reservas"));
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Erro ao buscar reservas");
+        }
+        return res.json();
+      })
+      .then((data) => {
+        setReservas(data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        setError(err.message || "Erro ao buscar reservas");
+        setLoading(false);
+      });
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen">
-      <Card className="w-96 shadow-xl">
-        <CardContent className="p-6">
-          <h2 className="text-2xl font-bold text-center mb-4">Dashboard Usuário</h2>
+    <div className="auth-container">
+      <h2>Dashboard do Usuário</h2>
 
-          <label className="block mb-2">Data de Início:</label>
-          <input type="date" className="w-full border p-2 rounded mb-4" value={startDate} onChange={(e) => setStartDate(e.target.value)} />
+      <label>Data de Início:</label>
+      <input type="date" value={startDate} onChange={(e) => setStartDate(e.target.value)} />
 
-          <label className="block mb-2">Data de Fim:</label>
-          <input type="date" className="w-full border p-2 rounded mb-4" value={endDate} onChange={(e) => setEndDate(e.target.value)} />
+      <label>Data de Fim:</label>
+      <input type="date" value={endDate} onChange={(e) => setEndDate(e.target.value)} />
 
-          <button className="w-full bg-blue-500 text-white p-2 rounded mb-4" onClick={fetchReservations}>Buscar Reservas</button>
+      <button onClick={fetchReservations} disabled={loading}>
+        {loading ? "Carregando..." : "Buscar Reservas"}
+      </button>
 
-          <h3 className="text-lg font-semibold mb-2">Suas Reservas:</h3>
-          <ul className="list-disc pl-5">
-            {reservas.map((reserva, index) => (
-              <li key={index}>
-                Suite: {reserva.suiteId} - {reserva.startDate} até {reserva.endDate}
-              </li>
-            ))}
-          </ul>
-        </CardContent>
-      </Card>
+      {error && <div className="error-message">{error}</div>}
+
+      <h3>Todas reservas:</h3>
+      {reservas.length === 0 ? (
+        <p>Nenhuma reserva encontrada.</p>
+      ) : (
+                <pre>
+        {JSON.stringify(
+            reservas.map(({ startDate, endDate, totalAmount }) => ({
+            startDate,
+            endDate,
+            totalAmount,
+            })),
+            null,
+            2
+        )}
+        </pre>
+
+      )}
     </div>
   );
 }

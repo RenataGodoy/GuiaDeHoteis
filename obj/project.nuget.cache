@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "JOSHSz3drCg=",
+  "dgSpecHash": "m+ab4OBB5ZA=",
   "success": true,
   "projectFilePath": "C:\\Users\\renat\\GuiaDeMoteisAPI\\GuiaDeMoteisAPI.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\renat\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\renat\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\renat\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\9.0.1\\microsoft.aspnetcore.authentication.jwtbearer.9.0.1.nupkg.sha512",
     "C:\\Users\\renat\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\6.0.0\\microsoft.aspnetcore.cryptography.internal.6.0.0.nupkg.sha512",

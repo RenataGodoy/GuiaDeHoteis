@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace GuiaDeMoteisAPI.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250209183206_InitialCreate")]
+    [Migration("20250209203719_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -82,11 +82,11 @@ namespace GuiaDeMoteisAPI.Migrations
                     b.Property<int>("ClientId")
                         .HasColumnType("integer");
 
-                    b.Property<DateTime>("EndDate")
-                        .HasColumnType("timestamp with time zone");
+                    b.Property<DateOnly>("EndDate")
+                        .HasColumnType("date");
 
-                    b.Property<DateTime>("StartDate")
-                        .HasColumnType("timestamp with time zone");
+                    b.Property<DateOnly>("StartDate")
+                        .HasColumnType("date");
 
                     b.Property<int>("SuiteId")
                         .HasColumnType("integer");
