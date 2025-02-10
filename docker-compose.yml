@@ -1,0 +1,55 @@
+version: "3.8"
+
+services:
+  node:
+    build:
+      context: .
+      dockerfile: Dockerfile.node
+    container_name: node-app
+    ports:
+      - "5173:5173"
+    networks:
+      - app-network
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  aspnet:
+    build:
+      context: .
+      dockerfile: Dockerfile.dotnet
+    container_name: aspnet-app
+    ports:
+      - "5000:80"
+    networks:
+      - app-network
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      - ConnectionStrings__DefaultConnection=Host=postgres;Port=5432;Database=database;Username=user;Password=password
+
+  postgres:
+    image: postgres:17
+    container_name: postgres-db
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: database
+    ports:
+      - "5432:5432"
+    networks:
+      - app-network
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U user -d database"]
+      interval: 5s
+      retries: 5
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  pgdata:

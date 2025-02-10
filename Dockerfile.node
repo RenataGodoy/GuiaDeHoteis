@@ -1,0 +1,25 @@
+FROM node:18 AS build
+
+WORKDIR /app/frontend
+
+# Copia package.json e instala as dependências
+COPY package*.json ./
+RUN npm install
+
+# Copia todo o código do frontend
+COPY . .
+
+# Ajusta permiss'ao
+RUN chmod -R 777 /app
+
+# Garante que os binários do Vite estão disponíveis
+RUN npm install -g vite
+
+# Define a variável de ambiente para o host
+ENV HOST=0.0.0.0
+
+# Expõe a porta correta
+EXPOSE 5173
+
+# Usa bash para evitar problemas de execução
+CMD ["sh", "-c", "npm run dev -- --host"]
